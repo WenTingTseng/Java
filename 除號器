@@ -1,0 +1,102 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+
+public class MainFrame extends JFrame {
+
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JTextField textDividend;
+	private JLabel label;
+	private JTextField tfDivisor;
+	private JButton btnNewButton;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrame frame = new MainFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public MainFrame() {
+		setTitle("GUI");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("\u88AB\u9664\u6578");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setBounds(40, 30, 71, 23);
+		contentPane.add(lblNewLabel);
+		
+		textDividend = new JTextField();
+		textDividend.setBounds(130, 27, 136, 29);
+		contentPane.add(textDividend);
+		textDividend.setColumns(10);
+		
+		label = new JLabel("\u9664\u6578");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(40, 74, 71, 23);
+		contentPane.add(label);
+		
+		tfDivisor = new JTextField();
+		tfDivisor.setColumns(10);
+		tfDivisor.setBounds(130, 71, 136, 29);
+		contentPane.add(tfDivisor);
+		
+		JScrollPane taResult = new JScrollPane();
+		taResult.setBounds(40, 115, 253, 108);
+		contentPane.add(taResult);
+		
+		JTextArea toArea = new JTextArea();
+		taResult.setViewportView(toArea);
+		
+		btnNewButton = new JButton("\u9664\u6CD5\u904B\u7B97");
+		btnNewButton.addActionListener(new ActionListener() {
+			
+
+			public void actionPerformed(ActionEvent arg0) {
+				int dividend=Integer.parseInt(textDividend.getText());
+				int divisor=Integer.parseInt(tfDivisor.getText());
+				int quotient=dividend/divisor;
+				int remainder=dividend % divisor;
+				String text=String.format("%d / %d = %d....%d",dividend,divisor,quotient,remainder);
+				toArea.setText(text);
+				
+			}
+		});
+		btnNewButton.setBounds(302, 74, 111, 31);
+		contentPane.add(btnNewButton);
+		
+		
+	}
+}
+
