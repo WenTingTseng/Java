@@ -1,0 +1,45 @@
+package findbugs;
+
+public class Triangular {
+	public String triangular(double a,double b,double c)
+	{
+		if(a + b > c && a + c > b && b + c > a)
+		{
+			if((a==b) && (b==c) && (c==a))
+				return ("正三角形");
+			
+			else if(((a==b) || (b==c) || (c==a))&&(Math.abs((Math.pow(a,2)+Math.pow(b,2)-Math.pow(c,2)))<0.0000001))
+				return ("等腰直角三角形");
+			else if((a==b) || (b==c) || (c==a))
+				return ("等腰三角形");
+			else if((Math.pow(a,2)+Math.pow(b,2)-Math.pow(c,2))<0.0000001)
+				return ("直角三角形");
+			else 
+				return ("一般三角形");
+		}
+		else
+		{
+			return ("非三角形");
+		}
+
+	}
+	
+	public void test()
+	{
+		assert(triangular(3,4,5)=="直角三角形"):"False";
+		assert(triangular(3,3,5)=="等腰三角形"):"False";
+		assert(triangular(-1,5,6)=="非三角形"):"False";
+		assert(triangular(1,1,Math.sqrt(2))=="等腰直角三角形"):"False";
+		assert(triangular(3,3,3)=="正三角形"):"False";
+		assert(triangular(-1,-2,-4)=="正三角形"):"False";
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Triangular demo=new Triangular();
+
+		demo.test();
+	}
+
+}
+
