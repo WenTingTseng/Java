@@ -11,7 +11,7 @@ class CFlowLayoutF extends JFrame{
 			add(btnDraw[i]);
 		}
 		setTitle("FlowLayout§G§½¤è¦¡");
-		setLayout(new FlowLayout());
+		setLayout(new FlowLayout());	
 		setBounds(50,50,180,140);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,5 +24,4 @@ public class J11_1_1 {
 		// TODO Auto-generated method stub
 		new CFlowLayoutF();
 	}
-
 }
